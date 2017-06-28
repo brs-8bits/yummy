@@ -1,0 +1,22 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'iPUC' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for iPUC
+
+  #Progress view effect
+  pod 'JTProgressHUD’
+
+  #Alert view with paralax background
+  pod 'JTAlertView'
+    
+  #RESTful
+  pod 'AFNetworking', '~> 3.0'
+
+  #Image cache
+  pod 'SDWebImage'
+
+end
