@@ -313,9 +313,8 @@
             return cell;
         }
         default:
-            break;
+            return nil;
     }
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
