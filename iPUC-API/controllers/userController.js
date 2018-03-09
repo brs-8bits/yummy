@@ -9,28 +9,39 @@ var jsonwebtoken    = require('jsonwebtoken');
 var config          = require('../config/config.json');
 
 userController.get = function (req, res, next) {
-    var users = new Users();
-    users.find('first', {where: 'id = '+ req.params.id}, function(err, rows, fields) {
+    var user = new Users();
+    user.find('first', {where: 'ID = '+ req.params.id}, function(err, rows, fields) {
         if (err) return next(err);
         res.json(rows);
     });
 };
 
 userController.post = function (req, res, next) {
-    var users = new Users();
+    var addUser = {
+        EMAIL : req.body.EMAIL,
+        SENHA : md5(req.body.SENHA)
 
-    users.id = req.body.id;
-    users.password = md5(req.body.password);
+    };
+    var user = new Users(addUser);
 
+    console.log(user)
 
-    var token = jsonwebtoken.sign(users, config.jwt_secret);
-    users.save();
-    users.find('first', {where: 'id = '+ req.params.id}, function(err, rows, fields) {
-        if (err) return next(err);
+    user.save(function (error, result, fields) {
+        if (error) return next(error);
 
-        res.header.authorization = token;
-        res.json(rows);
+        user.find('first', {where: 'ID = '+ result.insertId}, function(error, result, fields) {
+            if (error) return next(error);
+            var token = 'Baerer ' + jsonwebtoken.sign(result, config.jwt_secret);
+            res.header('authorization', [token])
+            res.json(result);
+        });
     });
+    // users.find('first', {where: 'id = '+ req.params.id}, function(err, rows, fields) {
+    //     if (err) return next(err);
+    //
+    //     res.header.authorization = token;
+    //     res.json(rows);
+    // });
 };
 
 

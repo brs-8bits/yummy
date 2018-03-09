@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "make test",
-    "start": "./bin/www"
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",

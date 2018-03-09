@@ -11,6 +11,6 @@ module.exports = function (app) {
     });
 
     app.get('/user/:id', userController.get);
-    app.post('/user', userController.get);
-    app.put('/user/:id', userController.get);
+    app.post('/user', userController.post);
+    // app.put('/user/:id', userController.get);
 };
