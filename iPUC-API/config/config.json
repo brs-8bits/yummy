@@ -1,10 +1,10 @@
 {
   "db": {
     "connectionLimit": 100,
-    "host": "xxx",
+    "host": "localhost",
     "user": "root",
-    "password": "xxx",
-    "database": "xxx"
+    "password": "root",
+    "database": "fishing_db"
   },
   "jwt_secret": "PJbjZpFaqgojqe"
 }
