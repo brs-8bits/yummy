@@ -1,10 +1,16 @@
 'use strict';
 
-var callsController = require('../controllers/callsController');
+var userController = require('../controllers/userController');
+var jwt            = require('../controllers/jwt.js');
 
 module.exports = function (app) {
-    app.post('/calls/user', callsController.user);
-    app.post('/calls/callcenter', callsController.callcenter);
-    app.get('/calls/:id', callsController.get);
-    app.put('/calls/:id', callsController.put);
+
+    // Authorization validate user
+    app.use('/user/:id', function (req, res, next) {
+        jwt(req, res, next)
+    });
+
+    app.get('/user/:id', userController.get);
+    app.post('/user', userController.get);
+    app.put('/user/:id', userController.get);
 };

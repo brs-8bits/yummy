@@ -1,14 +1,10 @@
 {
   "db": {
     "connectionLimit": 100,
-    "host": "api.dev.zuk.plus",
+    "host": "xxx",
     "user": "root",
-    "password": "JHsd3w4ph7sdd32saPR07",
-    "database": "zukbox"
+    "password": "xxx",
+    "database": "xxx"
   },
-  "onesignal":{
-    "app": "359ce061-d683-4c31-b3c7-48baeb598d8e",
-    "key": "NzkwYWFkZmItOWY3NS00MTBhLThiMDMtZTYxZTA2OTc0ZjFi"
-  },
-  "jwt_secret": "LMnfKymUhmWA5PKqvdPJbjZpFaqgojqe"
+  "jwt_secret": "PJbjZpFaqgojqe"
 }
