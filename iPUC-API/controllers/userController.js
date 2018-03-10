@@ -16,30 +16,25 @@ userController.get = function (req, res, next) {
     });
 };
 //Login
-userController.post = function (req, res, next) {
-    var addUser = {
-        EMAIL : req.body.EMAIL,
-        SENHA : md5(req.body.SENHA)
-
-    };
-    var user = new Users(addUser);
-
-    console.log(user)
-
-    user.find('field', {fields: ['EMAIL'], where: 'EMAIL = '+ req.params.EMAIL}, function(err, field) {
-        console.log(field);
+userController.signin = function (req, res, next) {
+    // var addUser = {
+    //     EMAIL : req.body.EMAIL,
+    //     SENHA : md5(req.body.SENHA)
+    //
+    // };
+    var user = new Users();
+    console.log(req.body.EMAIL, req.body.SENHA);
+    user.find('first', {where: "EMAIL = '"+ req.body.EMAIL+"' AND SENHA = '"+ md5(req.body.SENHA)+"'"},
+        function(error, result, fields) {
+            if (error) return next(error);
+            var token = 'Baerer ' + jsonwebtoken.sign(result, config.jwt_secret);
+            res.header('authorization', [token])
+            res.json(result);
     });
-
-    // user.find('first', {where: 'ID = '+ result.insertId}, function(error, result, fields) {
-    //     if (error) return next(error);
-    //     var token = 'Baerer ' + jsonwebtoken.sign(result, config.jwt_secret);
-    //     res.header('authorization', [token])
-    //     res.json(result);
-    // });
 
 };
 //Registrar
-userController.post = function (req, res, next) {
+userController.signup = function (req, res, next) {
     var addUser = {
         EMAIL : req.body.EMAIL,
         SENHA : md5(req.body.SENHA)
@@ -47,7 +42,7 @@ userController.post = function (req, res, next) {
     };
     var user = new Users(addUser);
 
-    console.log(user)
+    console.log(user.SENHA);
 
     user.save(function (error, result, fields) {
         if (error) return next(error);

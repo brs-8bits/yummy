@@ -11,9 +11,11 @@ module.exports = function (app) {
         jwt(req, res, next)
     });
     app.get('/user/:id', userController.get);
-    app.post('/user', userController.post);
-    app.post('/user/login', userController.post);
+    app.post('/signup', userController.signup);
+    app.post('/signin', userController.signin);
 
     app.get('/local', localController.get);
     app.get('/local/:id', localController.get);
+
+    // app.get('/dica'), dicaController.get);
 };
