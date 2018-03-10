@@ -36,14 +36,13 @@ userController.post = function (req, res, next) {
             res.json(result);
         });
     });
-    // users.find('first', {where: 'id = '+ req.params.id}, function(err, rows, fields) {
-    //     if (err) return next(err);
-    //
-    //     res.header.authorization = token;
-    //     res.json(rows);
-    // });
 };
 
+
+
+// function getUser( ) {
+//
+// };
 
 
 module.exports = userController;
