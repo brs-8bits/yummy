@@ -12,7 +12,8 @@ module.exports = function (app) {
     });
     app.get('/user/:id', userController.get);
     app.post('/user', userController.post);
+    // app.put('/user/:id', userController.get);
 
     app.get('/local', localController.get);
-    // app.put('/user/:id', userController.get);
+    app.get('/local/:id', localController.get);
 };
