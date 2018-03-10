@@ -13,17 +13,15 @@ localController.get = function (req, res, next) {
             if (err) return next(err);
             res.json(rows);
     });
-
 };
 
 localController.get = function (req, res, next) {
     var local = new Locais();
 
-    local.find('all', {}, function (err, rows, fields) {
+    local.find('all', function (err, rows, fields) {
         if (err) return next(err);
         res.json(rows);
     });
-
 };
 
 module.exports = localController;

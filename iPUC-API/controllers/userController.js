@@ -15,7 +15,30 @@ userController.get = function (req, res, next) {
         res.json(rows);
     });
 };
+//Login
+userController.post = function (req, res, next) {
+    var addUser = {
+        EMAIL : req.body.EMAIL,
+        SENHA : md5(req.body.SENHA)
 
+    };
+    var user = new Users(addUser);
+
+    console.log(user)
+
+    user.find('field', {fields: ['EMAIL'], where: 'EMAIL = '+ req.params.EMAIL}, function(err, field) {
+        console.log(field);
+    });
+
+    // user.find('first', {where: 'ID = '+ result.insertId}, function(error, result, fields) {
+    //     if (error) return next(error);
+    //     var token = 'Baerer ' + jsonwebtoken.sign(result, config.jwt_secret);
+    //     res.header('authorization', [token])
+    //     res.json(result);
+    // });
+
+};
+//Registrar
 userController.post = function (req, res, next) {
     var addUser = {
         EMAIL : req.body.EMAIL,
@@ -37,12 +60,6 @@ userController.post = function (req, res, next) {
         });
     });
 };
-
-
-
-// function getUser( ) {
-//
-// };
 
 
 module.exports = userController;

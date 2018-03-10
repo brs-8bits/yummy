@@ -12,7 +12,7 @@ module.exports = function (app) {
     });
     app.get('/user/:id', userController.get);
     app.post('/user', userController.post);
-    // app.put('/user/:id', userController.get);
+    app.post('/user/login', userController.post);
 
     app.get('/local', localController.get);
     app.get('/local/:id', localController.get);
