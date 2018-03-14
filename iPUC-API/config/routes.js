@@ -19,5 +19,8 @@ module.exports = function (app) {
     app.get('/local/:id', localController.get);
 
     app.get('/dica/:id', dicaController.get);
+    app.get('/dica', dicaController.get);
     app.post('/dica', dicaController.post);
+    app.put('/dica/:id', dicaController.put);
+    app.delete('/dica/:id', dicaController.delete);
 };
