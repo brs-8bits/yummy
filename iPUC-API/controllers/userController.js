@@ -50,6 +50,7 @@ userController.signup = function (req, res, next) {
         user.find('first', {where: 'ID = '+ result.insertId}, function(error, result, fields) {
             if (error) return next(error);
             var token = 'Baerer ' + jsonwebtoken.sign(result, config.jwt_secret);
+            // var token = jsonwebtoken.sign(result, config.jwt_secret);
             res.header('authorization', [token])
             res.json(result);
         });

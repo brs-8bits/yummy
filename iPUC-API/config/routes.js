@@ -3,6 +3,7 @@
 var userController = require('../controllers/userController');
 var localController = require('../controllers/localController');
 var dicaController = require('../controllers/dicaController');
+var likeController = require('../controllers/likeController');
 var jwt            = require('../controllers/jwt.js');
 
 module.exports = function (app) {
@@ -23,4 +24,7 @@ module.exports = function (app) {
     app.post('/dica', dicaController.post);
     app.put('/dica/:id', dicaController.put);
     app.delete('/dica/:id', dicaController.delete);
+
+    app.post('/likes/:id', likeController.post);
+    app.get('/likes', likeController.get);
 };
