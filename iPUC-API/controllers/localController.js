@@ -18,7 +18,7 @@ localController.get = function (req, res, next) {
 localController.get = function (req, res, next) {
     var local = new Locais();
 
-    local.find('all', function (err, rows, fields) {
+    local.find('all', {group: ['ID'], groupDESC:true}, function (err, rows, fields) {
         if (err) return next(err);
         res.json(rows);
     });
