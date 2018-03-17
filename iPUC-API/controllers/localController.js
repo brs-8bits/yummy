@@ -22,6 +22,12 @@ localController.get = function (req, res, next) {
         if (err) return next(err);
         res.json(rows);
     });
+
+    // local.query('SELECT * FROM local as L LEFT JOIN likes ON L.ID = likes.LOCAL_ID;', function (err, rows, fields) {
+    //         if (err) return next(err);
+    //         res.json(rows);
+    //     });
+
 };
 
 module.exports = localController;

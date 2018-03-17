@@ -4,6 +4,7 @@ var userController = require('../controllers/userController');
 var localController = require('../controllers/localController');
 var dicaController = require('../controllers/dicaController');
 var likeController = require('../controllers/likeController');
+var favoritoController = require('../controllers/favoritoController');
 var jwt            = require('../controllers/jwt.js');
 
 module.exports = function (app) {
@@ -27,4 +28,7 @@ module.exports = function (app) {
 
     app.post('/likes/:id', likeController.post);
     app.get('/likes', likeController.get);
+
+    app.post('/favorito/:id', favoritoController.post);
+    app.get('/favorito', favoritoController.get);
 };
