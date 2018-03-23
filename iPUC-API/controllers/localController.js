@@ -6,7 +6,7 @@ var mysql           = require('mysql');
 var Locais           = require('../models/locais_mysql.js');
 var config          = require('../config/config.json');
 
-localController.get = function (req, res, next) {
+localController.getId = function (req, res, next) {
     var local = new Locais();
 
     local.find('first', {where: 'ID = '+ req.params.id}, function (err, rows, fields) {
