@@ -18,7 +18,7 @@ module.exports = function (app) {
     app.post('/signin', userController.signin);
 
     app.get('/local', localController.get);
-    app.get('/local/:id', localController.get);
+    app.get('/local/:id', localController.getId);
 
     app.get('/dica/:id', dicaController.get);
     app.get('/dica', dicaController.get);
