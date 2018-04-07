@@ -23,11 +23,35 @@ localController.get = function (req, res, next) {
         res.json(rows);
     });
 
-    // local.query('SELECT * FROM local as L LEFT JOIN likes ON L.ID = likes.LOCAL_ID;', function (err, rows, fields) {
+    // local.query('SELECT * FROM local as LEFT JOIN likes ON L.ID = likes.LOCAL_ID;', function (err, rows, fields) {
     //         if (err) return next(err);
     //         res.json(rows);
     //     });
 
+};
+
+//Registrar
+localController.post = function (req, res, next) {
+    var localNovo = {
+        URL_IMAGEM : req.body.URL_IMAGEM,
+        DESCRICAO : req.body.DESCRICAO,
+        CIDADE : req.body.CIDADE,
+        CATEGORIA_PEIXES : req.body.CATEGORIA_PEIXES,
+        CATEGORIA : req.body.CATEGORIA,
+        LATITUDE : req.body.LATITUDE,
+        LONGITUDE : req.body.LONGITUDE,
+        ESTADO : req.body.ESTADO,
+        CONTATO : req.body.CONTATO,
+        SERVICOS : req.body.SERVICOS
+    };
+    var local = new Locais(localNovo);
+
+    console.log(local);
+
+    local.save(function (error, result, fields) {
+        if (error) return next(error);
+        res.json(result);
+    });
 };
 
 module.exports = localController;
