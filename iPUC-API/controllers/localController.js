@@ -6,7 +6,7 @@ var mysql           = require('mysql');
 var Locais           = require('../models/locais_mysql.js');
 var config          = require('../config/config.json');
 
-localController.get = function (req, res, next) {
+localController.getId = function (req, res, next) {
     var local = new Locais();
 
     local.find('first', {where: 'ID = '+ req.params.id}, function (err, rows, fields) {
@@ -30,6 +30,7 @@ localController.get = function (req, res, next) {
 
 };
 
+<<<<<<< HEAD
 //Registrar
 localController.post = function (req, res, next) {
     var localNovo = {
@@ -55,3 +56,6 @@ localController.post = function (req, res, next) {
 };
 
 module.exports = localController;
+=======
+module.exports = localController;
+>>>>>>> ecf3e1b5b2a0126236444a86b204ccbfe1ec99f1
