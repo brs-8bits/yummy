@@ -27,8 +27,8 @@ userController.signin = function (req, res, next) {
     user.find('first', {where: "EMAIL = '"+ req.body.EMAIL+"' AND SENHA = '"+ md5(req.body.SENHA)+"'"},
         function(error, result, fields) {
             if (error) return next(error);
-            var token = 'Baerer ' + jsonwebtoken.sign(result, config.jwt_secret);
-            res.header('authorization', [token])
+            // var token = 'Baerer ' + jsonwebtoken.sign(result, config.jwt_secret);
+            // res.header('authorization', [token])
             res.json(result);
     });
 
@@ -51,7 +51,7 @@ userController.signup = function (req, res, next) {
             if (error) return next(error);
             var token = 'Baerer ' + jsonwebtoken.sign(result, config.jwt_secret);
             // var token = jsonwebtoken.sign(result, config.jwt_secret);
-            res.header('authorization', [token])
+            // res.header('authorization', [token])
             res.json(result);
         });
     });

@@ -30,7 +30,6 @@ localController.get = function (req, res, next) {
 
 };
 
-<<<<<<< HEAD
 //Registrar
 localController.post = function (req, res, next) {
     var localNovo = {
@@ -56,6 +55,3 @@ localController.post = function (req, res, next) {
 };
 
 module.exports = localController;
-=======
-module.exports = localController;
->>>>>>> ecf3e1b5b2a0126236444a86b204ccbfe1ec99f1
